@@ -158,6 +158,150 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-DDOS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/DDOS/">DDOS</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/15/DDOS/" class="archive-article-date">
+  	<time datetime="2020-06-15T08:47:45.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>一</strong></p>
+<p>一、ping有去有回（连续向别人发送几个数据包）ctrl+c中止（最大65500）：</p>
+<p>ping 目标ip地址</p>
+<p>ping -t  目标ip地址 （一直ping）</p>
+<p>ping -n 数字 目标ip地址 ：ping几次</p>
+<p>ping -l 数字 目标IP地址 （修改数据包大小）</p>
+<blockquote>
+<p>nul表示不显示ping的结果，但是不能隐藏错误信息。2&gt;null表示隐藏错误信息。</p>
+</blockquote>
+<p>探测对方是否在线；若ping不通，可能不在线或者开着防火墙</p>
+<p>二、手工解析域名<br>  nslookup 网址</p>
+<p>三、查看ip地址</p>
+<pre><code>ipconfig   #查找ip和掩码
+ipconfig  /all   #查找详细信息</code></pre><p><strong>二、基本命令</strong></p>
+<p>  重定向符号：</p>
+<pre><code>1.&gt; 正确输出
+2.&gt;&gt; 位追加</code></pre><p>  命令：</p>
+<pre><code>cls：清屏
+dir：浏览文件目录
+  dir /a 浏览所有文件（包括隐藏的）
+echo：在屏幕上输出一句话，只能一句）
+echo 字符串 &gt; 文件名 ：写进文件中去
+cd 文件夹名称：改变当前目录
+type 文件名.扩展名 （|more这个是分页查看空格翻页）：查看文件内容
+Tab  ：补全
+\分隔
+copy con（屏幕） qingshu.txt  ：可以写多行（CTRL+z终止）
+rd ：
+  rd 文件夹名
+  例：rd test。
+  它支持带路径的文件夹名，
+  例：rd d:\test。
+  有时候，rd并不能很好地完成任务：删除test文件夹，但目录不是空的，这时要加个 /s 参数，它才会正常删除，
+  正确的写法是：rd /s d:\test
+  但仅仅使用 rd /s test ，CMD总是停下来并询问：是否确认(Y/N)
+  为了避免输入，增加/q (它取自quiet，官方解释为：安静模式)
+  带 /S 删除目录树时不要求确认。
+  写法为：rd /q /s d:\test</code></pre><p>  del 文件名.扩展名：删除文件</p>
+<p>  <em>（通配符）代表任意，例如：<br>      *.txt,dad.</em>,<em>.</em></p>
+<pre><code>d:  转到哪个盘，：这个不是注释
+-s：逐级删除
+-q：不要提示
+md 文件夹名：创立文件夹
+attrib ：对文件或文件夹的属性做修改
+  attrib +h feifei ：h是隐藏，+是添加
+  attrib -h feifei ：-是删掉属性
+  attrib +h +s +a +r feifei ：s 是将文件夹提升为系统级受保护的文件夹，
+                               a 是存档文件属性。
+                        r 只读文件属
+            fsutil file createnew c:\system.ini 40960000 ：生成文件+路径+大小
+            assoc .txt=exefile :修改关联性（txt用exe的打开）
+
+            shutdown -s -f -t 1000: s是要关机，t是时间（单位是秒），（重启是-r），f是强制
+            shutdown -a ：取消一切定时
+            shutdown -s -t 100 -c “认命吧” ：-c是显示消息
+            shutdown -l ：注销同logoff
+
+            copy   路径+文件名.扩展名  ..\b\：上级目录下的b文件
+            copy \shimisi\b\hahah.txt .\:“.”代表当前目录
+            copy muma.exe \\10.1.1.2\  :跨网络复制
+
+            move  路径+文件名.扩展名 移动路径
+            ren hah.txt heihei.txt :改文件名</code></pre><p>  <strong>三、批处理</strong></p>
+<p>  创建一个txt，扩展名改为 .bat</p>
+<pre><code>pause：暂停，后面如果有命令也暂停，输回车继续执行
+@echo off ：屏蔽执行过程，写在最上面，后面只显示结果
+color 0a：0是背景颜色（黑色），a是字体颜色（绿色）
+      color ？： 显示颜色数字
+
+  title my qq password :给批处理显示一个标题
+  echo.  :空一行
+  ：    分块
+  goto 分块名 ：调转到相应的分块名
+  start 路径 /网页名：打开程序或网页，后面什么都不写，就打开cmd
+  %userprofile%  ：用户变量
+  exit ：退出
+
+  set a=100 ：设置变量
+  set /p a=  ：等待用户输入a的值
+
+  ntsd -c q -pn winlogon.exe：强制杀死Windows登陆进程
+  （只针对Windows2003和xp。结果会蓝屏）
+  taskkill /im（指定杀死某个进程）explorer.exe :杀死桌面进程</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/15/DDOS/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Markdown" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -408,7 +552,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="https://wfo-12.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>六天blog</a>
             </li>
           
             <li class="search-li">
@@ -439,7 +583,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">这是我的第一个blog&lt;br&gt;&lt;br&gt;做的还不是很完善&lt;br&gt;谢谢大家的光顾</div>
   	  	
     	</section>
     
